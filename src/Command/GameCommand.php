@@ -24,7 +24,7 @@ use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 /**
  * GameLoop - Description. 
  *
- * @author Juan Manuel Torres <juan@cpcstrategy.com>
+ * @author Juan Manuel Torres <kinojman@gmail.com>
  */
 class GameCommand extends Command
 {

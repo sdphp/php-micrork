@@ -14,7 +14,7 @@ use SDPHP\PHPMicrork\State\GameStateInterface;
 /**
  * GameLoop - Description. 
  *
- * @author Juan Manuel Torres <juan@cpcstrategy.com>
+ * @author Juan Manuel Torres <kinojman@gmail.com>
  */
 class GameLoop extends AbstractGameLoop
 {

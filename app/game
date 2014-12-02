@@ -34,4 +34,3 @@ $gameState->setPlayer($player);
 $application = new Application();
 $application->add(new GameCommand($delegatingLoader, $gameState, $gameLogic));
 $application->run();
-       

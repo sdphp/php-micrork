@@ -14,7 +14,7 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * YamlLevelLoader - Description. 
  *
- * @author Juan Manuel Torres <juan@cpcstrategy.com>
+ * @author Juan Manuel Torres <kinojman@gmail.com>
  */
 class YamlGameLoader extends FileLoader
 {

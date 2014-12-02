@@ -76,5 +76,12 @@ level:
                 north: -
                 south: 4
                 west: 1
+                east: 8
+        -
+            name: "Desert"
+            description: "The desert is an arid place, nothing lives for more than a day."
+            directions:
+                north: -
+                south: -
+                west: 7
                 east: -
-
