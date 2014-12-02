@@ -40,23 +40,15 @@ Just type the following command
 http://i7-dungeon.sourceforge.net/source.txt
 
 ####ZORK Emulator:
-thcnet.net/zork/index.php
+http://thcnet.net/zork/index.php
 
 ####Text based game configuration
-configuration: http://www.tuxradar.com/practicalphp/21/4/1
-game loop and logic: http://www.tuxradar.com/practicalphp/21/4/2
+- [Text-based world planning](http://www.tuxradar.com/practicalphp/21/4/1)
+- [game loop and logic](http://www.tuxradar.com/practicalphp/21/4/2)
 
-####Symfony - Loading Resources:
-http://symfony.com/doc/current/components/config/resources.html
-
-####Symfony - The Console Component:
-http://symfony.com/doc/current/components/console/introduction.html
-
-####Symfony - Question Helper:
-http://symfony.com/doc/current/components/console/helpers/questionhelper.html
-
-####Symfony - YAML Component:
-http://symfony.com/doc/current/components/console/helpers/questionhelper.html
-
-####Symfony - File System Component:
-http://symfony.com/doc/current/components/filesystem/introduction.html
+####Symfony 
+- [Loading Resources](http://symfony.com/doc/current/components/config/resources.html)
+- [The Console Component](http://symfony.com/doc/current/components/console/introduction.html)
+- [Question Helper](http://symfony.com/doc/current/components/console/helpers/questionhelper.html)
+- [YAML Component](http://symfony.com/doc/current/components/console/helpers/questionhelper.html)
+- [File System Component](http://symfony.com/doc/current/components/filesystem/introduction.html)
