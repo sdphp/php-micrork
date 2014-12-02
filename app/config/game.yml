@@ -1,0 +1,7 @@
+# Game specific configuration
+player:
+    default_name: Dork
+world:
+    level_info:
+        level1: level/level1.yml
+        level2: level/level2.yml

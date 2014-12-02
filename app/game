@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+set_time_limit(0);
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+use SDPHP\PHPMicrork\Command\GameCommand;
+use SDPHP\PHPMicrork\Loader\YamlGameLoader;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Loader\LoaderResolver;
+use Symfony\Component\Config\Loader\DelegatingLoader;
+
+use SDPHP\PHPMicrork\State\BasicGameState;
+use SDPHP\PHPMicrork\Logic\BasicGameLogic;
+use SDPHP\PHPMicrork\Player\BasicPlayer;
+use SDPHP\PHPMicrork\Common\BasicDice;
+
+// put this code in a DI container ====>
+$configurationDirectory = realpath(__DIR__.'/config');
+$locator = new FileLocator([$configurationDirectory]);
+$loaderResolver = new LoaderResolver([new YamlGameLoader($locator)]);
+$delegatingLoader = new DelegatingLoader($loaderResolver);
+
+$gameDice = new BasicDice();
+$gameLogic = new BasicGameLogic();
+$gameState = new BasicGameState($gameDice);
+$player = new BasicPlayer($delegatingLoader);
+$gameState->setPlayer($player);
+
+// <====
+
+
+$application = new Application();
+$application->add(new GameCommand($delegatingLoader, $gameState, $gameLogic));
+$application->run();
+       

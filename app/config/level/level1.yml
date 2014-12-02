@@ -1,0 +1,80 @@
+level:
+    objectives:
+        kill_dangerous_man: false
+        drink_ale: false
+    room:
+        -
+            name: "The Pub"
+            description: "The pub is full of drunken revellers - the war against the orks has been won, and the fighting heroes have returned home."
+            directions:
+                north: 1
+                south: 2
+                west: 3
+                east: 4
+            actions:
+                drink: [ whiskey, ale, water]
+                fight: [drunk, bartender]
+                yell: [HAAAAA]
+
+        -
+            name: "Your House"
+            description: "Your house overlooks the Lamb and Lion pub, which makes it easy to stumble home when drunk."
+            directions:
+                north: -
+                south: 0
+                west: 6
+                east: 7
+
+        -
+            name: "A shady alley"
+            description: "The alley is dark with a peculiar mist making it hard to see the other side. You can hear someone whistling poorly."
+            directions:
+                north: 0
+                south: 5
+                west: -
+                east: -
+        -
+            name: "Castle"
+            description: "The castle was built hundreds of years ago when the city was much richer than it is now."
+            directions:
+                north: 6
+                south: -
+                west: -
+                east: 0
+        -
+            name: "City Walls"
+            description: "The city walls are eight metres high and two thick, and have kept invaders out for centuries."
+            directions:
+                north: 7
+                south: -
+                west: 0
+                east: -
+        -
+            name: "Misty alley"
+            description: "A dangerous-looking man stands before you holding a small dagger. \"Come any closer and I kill yer!\""
+            directions:
+                north: 2
+                south: -
+                west: -
+                east: -
+            actions:
+                fight: [man]
+            npcs:
+                man: npc/dangerous_man.yml
+        -
+            name: "Stables"
+            description: "The stables are full of sleeping horses, but at least it is nice and warm in here."
+            directions:
+                north: -
+                south: 3
+                west: -
+                east: 1
+        -
+            name: "Gardens"
+            description: "The gardens are peaceful and surprisingly full of flowers for this time of year."
+            directions:
+                north: -
+                south: 4
+                west: 1
+                east: -
+

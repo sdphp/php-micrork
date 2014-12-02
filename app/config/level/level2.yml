@@ -1,0 +1,40 @@
+world:
+    room:
+        -
+            name: ""
+            description: ""
+            north: 1
+            south: 2
+            west: 3
+            east: 4
+        -
+            name: ""
+            description: ""
+            north: -
+            south: 0
+            west: 6
+            east: 7
+        -
+            name: ""
+            description: ""
+            north: 0
+            south: 5
+            west: -
+            east: -
+        -
+            name: ""
+            description: ""
+            north: -
+            south: 0
+            west: 6
+            east: 7
+        -
+            name: ""
+            description: ""
+        -
+            name: ""
+            description: ""
+            north: 2
+            south: -
+            west: -
+            east: -
