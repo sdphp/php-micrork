@@ -23,7 +23,8 @@ abstract class AbstractContainer implements \ArrayAccess, \Traversable
 
     public function __construct($dataStructure)
     {
-        if ($dataStructure instanceof \ArrayObject
+        if ( is_array($dataStructure)
+            || $dataStructure instanceof \ArrayObject
             || $dataStructure instanceof \SplDoublyLinkedList
             || $dataStructure instanceof \SplFixedArray
             || $dataStructure instanceof \SplHeap
