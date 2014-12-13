@@ -24,8 +24,8 @@ $delegatingLoader = new DelegatingLoader($loaderResolver);
 
 $gameDice = new BasicDice();
 $gameLogic = new BasicGameLogic();
-$gameState = new BasicGameState($gameDice);
 $player = new BasicPlayer($delegatingLoader);
+$gameState = new BasicGameState($player, $gameDice, ['position' => 0]);
 $gameState->setPlayer($player);
 
 // <====

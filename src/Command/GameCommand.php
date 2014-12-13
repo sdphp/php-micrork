@@ -11,7 +11,7 @@ namespace SDPHP\PHPMicrork\Command;
 use SDPHP\PHPMicrork\IO\GameCLIIO;
 use SDPHP\PHPMicrork\Logic\GameLogicInterface;
 use SDPHP\PHPMicrork\Loop\GameLoop;
-use SDPHP\PHPMicrork\State\GameStateInterface;
+use SDPHP\PHPMicrork\State\StateInterface;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -42,7 +42,7 @@ class GameCommand extends Command
      */
     private $gameLogic;
 
-    public function __construct(DelegatingLoader $delegatingLoader, GameStateInterface $gameState, GameLogicInterface $gameLogic, $name = null)
+    public function __construct(DelegatingLoader $delegatingLoader, StateInterface $gameState, GameLogicInterface $gameLogic, $name = null)
     {
         parent::__construct($name);
         $this->delegatingLoader = $delegatingLoader;
@@ -53,7 +53,7 @@ class GameCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('micrork:run')
+            ->setName('run')
             ->setDescription('Main command to start a new PHPOrk game.')
             ->addArgument(
                 'name',
@@ -85,16 +85,12 @@ class GameCommand extends Command
         $gameIO = new GameCLIIO($questionHelper, $input, $output);
         $gameLoop = new GameLoop($gameIO);
         $this->gameState->getPlayer()->setName($name);
-        $next = true;
 
-        while ($next !== false) {
-            $this->gameState->setLevel( $this->currentLevel['level']);
+        while (!$this->gameState->isStateOver()) {
+            $this->gameState->setProperty('level', $this->currentLevel['level']);
             $gameLoop->start($this->gameState, $this->gameLogic);
-
-            if ($this->gameState->isGameOver()) {
-                $next = false;
-            } elseif ($this->gameState->isLevelOver()) {
-                $next = $this->gameState->getNextLevel();
+            $next = $this->gameState->getProperty('next_level', false);
+            if ($next) {
                 $this->loadLevel($next);
             }
         }

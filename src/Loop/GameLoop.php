@@ -9,7 +9,7 @@
 namespace SDPHP\PHPMicrork\Loop;
 
 use SDPHP\PHPMicrork\Logic\GameLogicInterface;
-use SDPHP\PHPMicrork\State\GameStateInterface;
+use SDPHP\PHPMicrork\State\StateInterface;
 
 /**
  * GameLoop - Description. 
@@ -18,14 +18,10 @@ use SDPHP\PHPMicrork\State\GameStateInterface;
  */
 class GameLoop extends AbstractGameLoop
 {
-    public function start(GameStateInterface $gameState, GameLogicInterface $gameLogic)
+    public function start(StateInterface $gameState, GameLogicInterface $gameLogic)
     {
-        while (!$gameState->isLevelOver()) {
+        while (!$gameState->objectivesCompleted() && !$gameState->isStateOver()) {
             $gameLogic->switchState($gameState, $this->gameIO);
-
-            if (!$gameState->isGameOver() && $gameState->isLevelOver()) {
-                $this->gameIO->printInfo('LOADING NEXT LEVEL . . .');
-            }
         }
     }
 }
