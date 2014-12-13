@@ -1,7 +1,7 @@
-npc:
-    "name": "troll",
-    "minHealth": 20,
-    "maxHealth": 30,
-    "resists": ["cold", "poison"],
-    "weaknesses": ["fire", "light"],
-    "attacks": ["strikeblade"]
+stats:
+    name: "troll"
+    minHealth: 20
+    maxHealth: 30
+    resists: ["cold", "poison"]
+    weaknesses: ["fire", "light"]
+    attacks: ["strikeblade"]
