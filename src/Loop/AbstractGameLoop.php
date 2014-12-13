@@ -9,7 +9,7 @@ namespace SDPHP\PHPMicrork\Loop;
 
 use SDPHP\PHPMicrork\IO\GameIOInterface;
 use SDPHP\PHPMicrork\Logic\GameLogicInterface;
-use SDPHP\PHPMicrork\State\GameStateInterface;
+use SDPHP\PHPMicrork\State\StateInterface;
 
 /**
  * AbstractGameLoopo - Description. 
@@ -28,5 +28,5 @@ abstract class AbstractGameLoop
         $this->gameIO = $gameIO;
     }
 
-    abstract public function start(GameStateInterface $gameState, GameLogicInterface $gameLogic);
+    abstract public function start(StateInterface $gameState, GameLogicInterface $gameLogic);
 } 
