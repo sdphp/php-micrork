@@ -1,5 +1,8 @@
 php-micrork
 ===========
+
+
+
 Text based action adventure game build on PHP and Symfony components. 
 This is a work in progress and is part of the end of the year 2014 SDPHP studygroup programming project. 
 
@@ -12,7 +15,7 @@ This is a work in progress and is part of the end of the year 2014 SDPHP studygr
 ##Start the game
 Just type the following command
 ```
-> php app/game micrork:run
+> php app/game run [character name]
 ```
 
 ## Things to work on
