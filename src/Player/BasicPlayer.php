@@ -83,7 +83,7 @@ class BasicPlayer implements PlayerInterface, InteractionInterface, FileLoaderIn
         $this->weapon = $weapon;
     }
 
-    public function addDamage($amount)
+    public function damage($amount)
     {
         $this->health -= abs($amount);
 
@@ -93,7 +93,7 @@ class BasicPlayer implements PlayerInterface, InteractionInterface, FileLoaderIn
         }
     }
 
-    public function addHealth($amount)
+    public function heal($amount)
     {
         $this->health += abs($amount);
     }
