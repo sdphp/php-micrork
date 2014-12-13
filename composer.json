@@ -15,7 +15,8 @@
         "php": ">=5.4",
         "symfony/console": "~2.6",
         "symfony/yaml": "~2.6",
-        "symfony/config": "~2.6"
+        "symfony/config": "~2.6",
+        "symfony/http-foundation": "~2.6"
     },
     "autoload": {
         "psr-4": {
