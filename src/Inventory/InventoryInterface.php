@@ -8,6 +8,7 @@
 
 namespace SDPHP\PHPMicrork\Inventory;
 
+use SDPHP\PHPMicrork\Item\ItemInterface;
 
 /**
  * InventoryInterface - Description. 
