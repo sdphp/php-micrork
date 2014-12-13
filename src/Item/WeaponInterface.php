@@ -5,8 +5,11 @@
  * please view the LICENSE file that was distributed 
  * with this source code.
  */
+ 
 namespace SDPHP\PHPMicrork\Item;
+
 use SDPHP\PHPMicrork\Common\DiceInterface;
+use SDPHP\PHPMicrork\Player\PlayerInterface;
 
 /**
  * WeaponInterface - Description. 
@@ -15,5 +18,7 @@ use SDPHP\PHPMicrork\Common\DiceInterface;
  */
 interface WeaponInterface extends ItemInterface
 {
-    public function useWeapon(DiceInterface $dice);
+    public function setDice(DiceInterface $dice);
+    
+    public function attack(PlayerInterface $player);
 }
