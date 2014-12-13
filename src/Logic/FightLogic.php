@@ -7,7 +7,8 @@
  */
 
 namespace SDPHP\PHPMicrork\Logic;
-use SDPHP\PHPMicrork\State\GameStateInterface;
+
+use SDPHP\PHPMicrork\State\StateInterface;
 use SDPHP\PHPMicrork\IO\GameIOInterface;
 
 
@@ -19,10 +20,11 @@ use SDPHP\PHPMicrork\IO\GameIOInterface;
 class FightLogic implements GameLogicInterface
 {
 
-    public function switchState(GameStateInterface $state, GameIOInterface $gameIO)
+    public function switchState(StateInterface $state, GameIOInterface $gameIO)
     {
         $player = $state->getPlayer();
-        $npc = $state->getNPC();
+        $npc = $state->getNPCs();
+
         // TODO: Implement switchState() method.
     }
 }
