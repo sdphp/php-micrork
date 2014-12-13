@@ -13,7 +13,4 @@ namespace SDPHP\PHPMicrork\Exception;
  *
  * @author Juan Manuel Torres <kinojman@gmail.com>
  */
-class GameException extends \RuntimeException
-{
-
-} 
+class GameException extends \RuntimeException {} 
