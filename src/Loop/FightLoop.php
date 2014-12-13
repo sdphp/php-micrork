@@ -8,9 +8,8 @@
 
 namespace SDPHP\PHPMicrork\Loop;
 
-use SDPHP\PHPMicrork\Logic\AbstractGameLoop;
 use SDPHP\PHPMicrork\Logic\GameLogicInterface;
-use SDPHP\PHPMicrork\State\GameStateInterface;
+use SDPHP\PHPMicrork\State\StateInterface;
 
 /**
  * GameLoop - Description. 
@@ -19,9 +18,11 @@ use SDPHP\PHPMicrork\State\GameStateInterface;
  */
 class FightLoop extends AbstractGameLoop
 {
-    public function start(GameStateInterface $gameState, GameLogicInterface $gameLogic)
+    public function start(StateInterface $gameState, GameLogicInterface $gameLogic)
     {
-        while (!$gameState->isLevelOver()) {
+        $weapon = $this->gameIO->askQuestion('What weapon do you want to use?');
+
+        while (true) {
             $gameLogic->switchState($gameState, $this->gameIO);
 
             if ($gameState->isFightOver()) {
