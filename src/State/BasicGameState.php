@@ -8,40 +8,20 @@
 namespace SDPHP\PHPMicrork\State;
 
 use SDPHP\PHPMicrork\Common\DiceInterface;
-use SDPHP\PHPMicrork\Common\FileLoaderInterface;
-use SDPHP\PHPMicrork\Common\FileLoaderTrait;
-use SDPHP\PHPMicrork\Exception\GameLoadingException;
-use SDPHP\PHPMicrork\Player\BasicNPC;
 use SDPHP\PHPMicrork\Player\PlayerInterface;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
  * GameState - Description. 
  *
  * @author Juan Manuel Torres <kinojman@gmail.com>
  */
-class BasicGameState implements GameStateInterface, FileLoaderInterface
+class BasicGameState implements StateInterface
 {
-    use FileLoaderTrait;
-
     /**
      * @var bool
      */
-    private $gameOver = false;
-
-    /**
-     * @var bool
-     */
-    private $levelOver = false;
-
-    /**
-     * @var int
-     */
-    private $position;
-
-    /**
-     * @var array
-     */
-    private $level = [];
+    private $state = false;
 
     /**
      * @var \SDPHP\PHPMicrork\Player\PlayerInterface
@@ -49,128 +29,42 @@ class BasicGameState implements GameStateInterface, FileLoaderInterface
     private $player;
 
     /**
-     * @var \SDPHP\PHPMicrork\Player\PlayerInterface
+     * @var array of \SDPHP\PHPMicrork\Player\PlayerInterface
      */
-    private $currentNPC;
+    private $npcs = [];
 
     /**
-     * @var \Symfony\Component\Config\Loader\DelegatingLoader
-     */
-    private $fileLoader;
-
-    /**
-     * @var DiceInterface
+     * @var \SDPHP\PHPMicrork\Common\DiceInterface
      */
     private $dice;
 
+    /**
+     * @var \Symfony\Component\HttpFoundation\ParameterBag
+     */
+    private $properties;
 
-    public function __construct(DiceInterface $dice)
+
+    public function __construct(PlayerInterface $player, DiceInterface $dice, array $properties = array())
     {
-        $this->setPosition(0);
-        $this->dice = $dice;
+        $this->setDice($dice);
+        $this->setPlayer($player);
+        $this->properties = new ParameterBag($properties);
+        $this->properties->set('location', 0);
+
     }
 
     /**
      * @return bool
      */
-    public function isGameOver()
+    public function isStateOver()
     {
-        return $this->gameOver;
+        return $this->state;
     }
 
-    /**
-     * @return boolean
-     */
-    public function isLevelOver()
-    {
-        return $this->levelOver;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNextLevel()
-    {
-        if(isset($this->level['room'][$this->position]['next_level'])) {
-            return $this->level['room'][$this->position]['next_level'];
-        } else {
-            $roomName = $this->level['room'][$this->position]['name'];
-            throw new GameLoadingException(sprintf('The room %s does not contain a next level.', $roomName));
-        }
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param int $position
-     * @return void
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRoom()
-    {
-        return $this->level['room'][$this->position];
-    }
-
-    /**
-     * @param $room
-     */
-    public function setRoom($room)
-    {
-        $this->level['room'][$this->position] = $room;
-    }
-
-
-
-    /**
-     * @return mixed
-     */
-    public function getDirections()
-    {
-        return $this->level['room'][$this->position]['directions'];
-    }
-
-    /**
-     * @param $directions
-     */
-    public function setDirections($directions)
-    {
-        $this->level['room'][$this->position]['directions'] = $directions;
-    }
-
-    /**
-     * @return array
-     */
-    public function getLevel()
-    {
-        return $this->level;
-    }
-
-    /**
-     * @param $level
-     * @return void
-     */
-    public function setLevel($level)
-    {
-        $this->level = $level;
-    }
 
     public function quit()
     {
-        $this->gameOver = true;
-        $this->levelOver = true;
+        $this->state = true;
     }
 
     public function getPlayer()
@@ -186,47 +80,43 @@ class BasicGameState implements GameStateInterface, FileLoaderInterface
         $this->player = $player;
     }
 
-     public function loadNPC($npcName)
-    {
-        $this->currentNPC = new BasicNPC();
-        $this->currentNPC->setDelegatingLoader($this->loader);
-        $this->currentNPC->loadConfiguration($npcName);
-
-    }
-
-    public function getNPC()
-    {
-        return $this->currentNPC;
-    }
-
     /**
-     * @return boolean
+     * @return bool
      */
-    public function objectivesCompleted()
+    public function hasNPC()
     {
-        // TODO: Implement objectivesCompleted() method.
+        return !empty($this->npcs);
     }
 
     /**
-     * @param $key
-     * @param $value
+     * @param \SDPHP\PHPMicrork\Player\PlayerInterface $npc
+     * @return void
+     */
+    public function setNPC(PlayerInterface $npc)
+    {
+        $name = $npc->getName();
+        $this->npcs[$name] = $npc;
+    }
+
+    /**
+     * @return array
+     */
+    public function getNPCs()
+    {
+        return $this->npcs;
+    }
+
+    /**
+     * @param \SDPHP\PHPMicrork\Common\DiceInterface $dice
      * @return mixed
      */
-    public function updateObjectives($key, $value)
+    public function setDice(DiceInterface $dice)
     {
-        // TODO: Implement updateObjectives() method.
+        $this->dice = $dice;
     }
 
     /**
-     * @return mixed
-     */
-    public function setObjectives()
-    {
-        // TODO: Implement setObjectives() method.
-    }
-
-    /**
-     * @return DiceInterface
+     * @return \SDPHP\PHPMicrork\Common\DiceInterface
      */
     public function getDice()
     {
@@ -234,10 +124,59 @@ class BasicGameState implements GameStateInterface, FileLoaderInterface
     }
 
     /**
-     * @param DiceInterface $dice
+     * @return bool
      */
-    public function setDice(DiceInterface $dice)
+    public function objectivesCompleted()
     {
-        $this->dice = $dice;
+        $objectives = $this->getObjectives();
+
+        return array_reduce($objectives, function ($carry, $value) {
+            return (bool)$carry && (bool)$value;
+        });
+
+    }
+
+    /**
+     * Adds an array of objectives. Will overwrite any previous objectives.
+     *
+     * @param array $objectives
+     * @return void
+     */
+    public function addObjectives(array $objectives)
+    {
+        if ($this->properties->has('level[objectives]')) {
+            $currentObjectives = $this->getObjectives();
+            $objectives = array_merge($currentObjectives, $objectives);
+        }
+
+        $this->setProperty('objectives', $objectives);
+    }
+
+    /**
+     * @return array
+     */
+    public function getObjectives()
+    {
+        return $this->getProperty('level[objectives]');
+    }
+
+    /**
+     * @param string $path
+     * @param mixed  $default The default value if the parameter key does not exist
+     * @param bool   $deep    If true, a path like foo[bar] will find deeper items
+     * @return mixed
+     */
+    public function getProperty($path, $default = null, $deep = true)
+    {
+        return $this->properties->get($path, $default, $deep);
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     */
+    public function setProperty($key, $value)
+    {
+        $this->properties->set($key, $value);
     }
 }
