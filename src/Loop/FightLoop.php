@@ -22,12 +22,8 @@ class FightLoop extends AbstractGameLoop
     {
         $weapon = $this->gameIO->askQuestion('What weapon do you want to use?');
 
-        while (true) {
+        while ($gameState->isStateOver()) {
             $gameLogic->switchState($gameState, $this->gameIO);
-
-            if ($gameState->isFightOver()) {
-                break;
-            }
         }
     }
 }
