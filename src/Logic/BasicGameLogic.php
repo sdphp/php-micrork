@@ -9,7 +9,8 @@ namespace SDPHP\PHPMicrork\Logic;
 
 use SDPHP\PHPMicrork\IO\GameIOInterface;
 use SDPHP\PHPMicrork\Loop\FightLoop;
-use SDPHP\PHPMicrork\State\GameStateInterface;
+use SDPHP\PHPMicrork\Player\BasicNPC;
+use SDPHP\PHPMicrork\State\StateInterface;
 
 /**
  * BasicGameLogic - Description. 
@@ -18,12 +19,14 @@ use SDPHP\PHPMicrork\State\GameStateInterface;
  */
 class BasicGameLogic implements GameLogicInterface
 {
-    public function switchState(GameStateInterface $gameState, GameIOInterface $gameIO)
+    public function switchState(StateInterface $gameState, GameIOInterface $gameIO)
     {
-        $room = $gameState->getRoom();
+        $location = $gameState->getProperty('location');
+        $locationProperty = sprintf('level[room][%s]', $location);
+        $room = $gameState->getProperty($locationProperty);
         $directions = $room['directions'];
-        $gameIO->printPlace($room);
 
+        $gameIO->printPlace($room);
         $input = $gameIO->askQuestion('Choose your next move: ');
 
         // get command an argument, usually a verb followed by noun
@@ -34,7 +37,7 @@ class BasicGameLogic implements GameLogicInterface
         switch(strtolower($command)) {
             case 'north':
                 if (isset($directions[$command]) && $directions[$command] !== '-') {
-                    $gameState->setPosition($directions[$command]);
+                    $gameState->setProperty('location', $directions[$command]);
                 } else {
                     $gameIO->printError("You cannot go north!");
                 }
@@ -42,7 +45,7 @@ class BasicGameLogic implements GameLogicInterface
 
             case 'south':
                 if (isset($directions[$command]) && $directions[$command] !== '-') {
-                    $gameState->setPosition($directions[$command]);
+                    $gameState->setProperty('location', $directions[$command]);
                 } else {
                     $gameIO->printError("You cannot go south!");
                 }
@@ -50,7 +53,7 @@ class BasicGameLogic implements GameLogicInterface
 
             case 'west':
                 if (isset($directions[$command]) && $directions[$command] !=='-') {
-                    $gameState->setPosition($directions[$command]);
+                    $gameState->setProperty('location', $directions[$command]);
                 } else {
                     $gameIO->printError("You cannot go west!");
                 }
@@ -58,7 +61,7 @@ class BasicGameLogic implements GameLogicInterface
 
             case 'east':
                 if (isset($directions[$command]) && $directions[$command] !== '-') {
-                    $gameState->setPosition($directions[$command]);
+                    $gameState->setProperty('location', $directions[$command]);
                 } else {
                     $gameIO->printError("You cannot go east!");
                 }
@@ -70,7 +73,7 @@ class BasicGameLogic implements GameLogicInterface
 
             case 'fight':
                     if ($argument) {
-                        $gameState->loadNPC($argument);
+                        $gameState->setNpc(new BasicNPC($argument));
                         $fightLoop = new FightLoop($gameIO);
                         $fightLoop->start($gameState, new FightLogic());
 
@@ -92,7 +95,7 @@ class BasicGameLogic implements GameLogicInterface
                 if ($argument) {
                     $gameIO->printComment(sprintf('Drinking %s, glup...', $argument));
                     if ($argument === 'water') {
-                        $gameIO->printComment('Sissy!');
+                        $gameIO->printComment('You hear a drunken warrion in the distance yell: "Sissy!"');
                     }
                 } else {
                     $gameIO->printError('You need to choose what you are Drinking');

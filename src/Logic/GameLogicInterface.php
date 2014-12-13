@@ -5,10 +5,11 @@
  * please view the LICENSE file that was distributed 
  * with this source code.
  */
+
 namespace SDPHP\PHPMicrork\Logic;
 
 use SDPHP\PHPMicrork\IO\GameIOInterface;
-use SDPHP\PHPMicrork\State\GameStateInterface;
+use SDPHP\PHPMicrork\State\StateInterface;
 
 /**
  * LogicInterface - Description. 
@@ -17,5 +18,5 @@ use SDPHP\PHPMicrork\State\GameStateInterface;
  */
 interface GameLogicInterface
 {
-    public function switchState(GameStateInterface $state, GameIOInterface $gameIO);
+    public function switchState(StateInterface $state, GameIOInterface $gameIO);
 }
