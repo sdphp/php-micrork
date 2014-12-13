@@ -55,3 +55,10 @@ http://thcnet.net/zork/index.php
 - [Question Helper](http://symfony.com/doc/current/components/console/helpers/questionhelper.html)
 - [YAML Component](http://symfony.com/doc/current/components/console/helpers/questionhelper.html)
 - [File System Component](http://symfony.com/doc/current/components/filesystem/introduction.html)
+
+####Design
+- [Prototype design pattern](http://gameprogrammingpatterns.com/prototype.html)
+- [Designing an RPG Inventory System That Fits: Preliminary Steps](http://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-preliminary-steps--gamedev-14725)
+- [Designing an RPG Inventory System That Fits: Echoes of Eternea](http://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-echoes-of-eternea--gamedev-14947)
+- [Weapon design patterns in computer games](http://dl.acm.org/citation.cfm?id=2427119)
+- 
