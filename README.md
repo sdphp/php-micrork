@@ -61,4 +61,4 @@ http://thcnet.net/zork/index.php
 - [Designing an RPG Inventory System That Fits: Preliminary Steps](http://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-preliminary-steps--gamedev-14725)
 - [Designing an RPG Inventory System That Fits: Echoes of Eternea](http://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-echoes-of-eternea--gamedev-14947)
 - [Weapon design patterns in computer games](http://dl.acm.org/citation.cfm?id=2427119)
-- 
+- [The Fundamental Pillars of a Combat System](http://www.gamasutra.com/view/feature/175950/the_fundamental_pillars_of_a_.php)
