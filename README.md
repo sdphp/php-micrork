@@ -1,7 +1,7 @@
 php-micrork
 ===========
 
-
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/86000835-dace-41da-aa4a-6cd93f9c56a0/big.png)](https://insight.sensiolabs.com/projects/86000835-dace-41da-aa4a-6cd93f9c56a0)
 
 Text based action adventure game build on PHP and Symfony components. 
 This is a work in progress and is part of the end of the year 2014 SDPHP studygroup programming project. 
