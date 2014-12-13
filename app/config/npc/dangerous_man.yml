@@ -1,0 +1,6 @@
+npc:
+    "name": "Dangerous Man",
+    "minHealth": 5,
+    "maxHealth": 10,
+    "weaknesses": ["fire", "light", "cold", "poison"],
+    "attacks": ["dagger"]
