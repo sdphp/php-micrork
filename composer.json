@@ -11,6 +11,10 @@
             "email": "kinojman@gmail.com"
         },
         {
+            "name": "Nara Noeur",
+            "email": "gfayzulina@gmail.com"
+        },
+        {
             "name": "Taylor",
             "email": "taylortizzay@gmail.com"
         },
@@ -18,6 +22,7 @@
             "name":"Salvador Franco",
             "emial":"s.francosolutions@gmail.com"
         }
+        
     ],
     "require": {
         "php": ">=5.4",
