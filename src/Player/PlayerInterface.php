@@ -9,22 +9,34 @@
 namespace SDPHP\PHPMicrork\Player;
 
 use SDPHP\PHPMicrork\Common\DiceInterface;
-use SDPHP\PHPMicrork\Item\WeaponInterface;
+use SDPHP\PHPMicrork\Item\ItemInterface;
+use SDPHP\PHPMicrork\Inventory\InventoryInterface;
 
 /**
  * PlayerInterface - Description. 
  *
  * @author Juan Manuel Torres <kinojman@gmail.com>
  */
+ 
 interface PlayerInterface 
 {
-    public function attack(DiceInterface $dice);
+    public function mountItem(ItemInterface $item);
+    
+    public function unMountItem();
+    
+    /**
+     * Get the current mounted item, if none return false
+     * @returns \SDPHP\PHPMicrork\Item\ItemInterface | false
+     */ 
+    public function getItem();
+    
+    public function setInventory(InventoryInterface $inventory);
+    
+    public function getInventory();
 
-    public function setWeapon(WeaponInterface $weapon);
+    public function damage($amount);
 
-    public function addDamage($amount);
-
-    public function addHealth($amount);
+    public function heal($amount);
 
     public function getHealth();
 

@@ -16,4 +16,10 @@ namespace SDPHP\PHPMicrork\Item;
 interface ItemInterface 
 {
     public function getDescription();
+    
+    public function getStats();
+    
+    public function setStats($stats);
+    
+    public function useItem();
 } 

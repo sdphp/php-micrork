@@ -1,5 +1,8 @@
 php-micrork
 ===========
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/86000835-dace-41da-aa4a-6cd93f9c56a0/big.png)](https://insight.sensiolabs.com/projects/86000835-dace-41da-aa4a-6cd93f9c56a0)
+
 Text based action adventure game build on PHP and Symfony components. 
 This is a work in progress and is part of the end of the year 2014 SDPHP studygroup programming project. 
 
@@ -12,7 +15,7 @@ This is a work in progress and is part of the end of the year 2014 SDPHP studygr
 ##Start the game
 Just type the following command
 ```
-> php app/game micrork:run
+> php app/game run [character name]
 ```
 
 ## Things to work on
@@ -52,3 +55,10 @@ http://thcnet.net/zork/index.php
 - [Question Helper](http://symfony.com/doc/current/components/console/helpers/questionhelper.html)
 - [YAML Component](http://symfony.com/doc/current/components/console/helpers/questionhelper.html)
 - [File System Component](http://symfony.com/doc/current/components/filesystem/introduction.html)
+
+####Design
+- [Prototype design pattern](http://gameprogrammingpatterns.com/prototype.html)
+- [Designing an RPG Inventory System That Fits: Preliminary Steps](http://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-preliminary-steps--gamedev-14725)
+- [Designing an RPG Inventory System That Fits: Echoes of Eternea](http://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-echoes-of-eternea--gamedev-14947)
+- [Weapon design patterns in computer games](http://dl.acm.org/citation.cfm?id=2427119)
+- [The Fundamental Pillars of a Combat System](http://www.gamasutra.com/view/feature/175950/the_fundamental_pillars_of_a_.php)
