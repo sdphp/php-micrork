@@ -15,14 +15,14 @@
             "email": "gfayzulina@gmail.com"
         },
         {
-            "name": "Taylor",
+            "name": "Tacommylor",
             "email": "taylortizzay@gmail.com"
         },
         {
             "name":"Salvador Franco",
             "emial":"s.francosolutions@gmail.com"
->>>>>>> 789124583d1490b98103c8ee4962a97662192aa6
         }
+        
     ],
     "require": {
         "php": ">=5.4",
