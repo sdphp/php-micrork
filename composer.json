@@ -7,13 +7,16 @@
     "license":"MIT",
     "authors": [
         {
-            "name": "Juan Manuel Torres",
+            "name": "Juan Manuel Torres.",
             "email": "kinojman@gmail.com"
         },
         {
-
             "name":"Malaya Manggubat",
             "email": "t_manggubat@yahoo.com"
+        },
+        {
+            "name": "Nara Noeur",
+            "email": "gfayzulina@gmail.com"
         },
         {
             "name": "Taylor",
@@ -22,8 +25,8 @@
         {
             "name":"Salvador Franco",
             "emial":"s.francosolutions@gmail.com"
-
         }
+        
     ],
     "require": {
         "php": ">=5.4",

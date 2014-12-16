@@ -1,0 +1,5 @@
+imports:
+    - {resource: "human.yml"}
+stats:
+    name: "Dangerous Man"
+    attacks: ["dagger"]

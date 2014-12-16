@@ -24,7 +24,7 @@ class FightLogic implements GameLogicInterface
     {
         $player = $state->getPlayer();
         $npc = $state->getNPCs();
-
+        $gameIO->printError('TODO: Implement switchState method!!');
         // TODO: Implement switchState() method.
     }
 }
