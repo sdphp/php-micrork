@@ -13,6 +13,7 @@ use SDPHP\PHPMicrork\Common\FileLoaderInterface;
 use SDPHP\PHPMicrork\Common\FileLoaderTrait;
 use SDPHP\PHPMicrork\Common\InteractionInterface;
 use SDPHP\PHPMicrork\Exception\GameException;
+use SDPHP\PHPMicrork\Inventory\InventoryInterface;
 use SDPHP\PHPMicrork\Item\ItemInterface;
 use SDPHP\PHPMicrork\Item\WeaponInterface;
 use Symfony\Component\Config\Loader\DelegatingLoader;
@@ -130,5 +131,60 @@ class BasicPlayer implements PlayerInterface, InteractionInterface, FileLoaderIn
     public function isDead()
     {
         return $this->dead;
+    }
+
+    /**
+     * @param DelegatingLoader $loader
+     * @return mixed
+     */
+    public function setDelegatingLoader(DelegatingLoader $loader)
+    {
+        // TODO: Implement setDelegatingLoader() method.
+    }
+
+    /**
+     * @return \Symfony\Component\Config\Loader\DelegatingLoader
+     */
+    public function getDelegatingLoader()
+    {
+        // TODO: Implement getDelegatingLoader() method.
+    }
+
+    /**
+     * @param null $name
+     * @return mixed
+     */
+    public function loadFile($name = null)
+    {
+        // TODO: Implement loadFile() method.
+    }
+
+    public function mountItem(ItemInterface $item)
+    {
+        // TODO: Implement mountItem() method.
+    }
+
+    public function unMountItem()
+    {
+        // TODO: Implement unMountItem() method.
+    }
+
+    /**
+     * Get the current mounted item, if none return false
+     * @returns \SDPHP\PHPMicrork\Item\ItemInterface | false
+     */
+    public function getItem()
+    {
+        // TODO: Implement getItem() method.
+    }
+
+    public function setInventory(InventoryInterface $inventory)
+    {
+        // TODO: Implement setInventory() method.
+    }
+
+    public function getInventory()
+    {
+        // TODO: Implement getInventory() method.
     }
 }

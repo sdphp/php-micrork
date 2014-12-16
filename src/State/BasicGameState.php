@@ -157,7 +157,7 @@ class BasicGameState implements StateInterface
      */
     public function getObjectives()
     {
-        return $this->getProperty('level[objectives]');
+    return $this->getProperty('level[objectives]');
     }
 
     /**
